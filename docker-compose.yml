@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:13
+    container_name: openproject_db
+    restart: always
+    environment:
+      POSTGRES_DB: openproject
+      POSTGRES_USER: openproject
+      POSTGRES_PASSWORD: openproject
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  openproject:
+    image: openproject/openproject:14
+    container_name: openproject
+    depends_on:
+      - db
+    ports:
+      - "8200:80"
+    environment:
+      OPENPROJECT_HOST__NAME: "10.123.15.115:8200"
+      OPENPROJECT_SECRET_KEY_BASE: "supersecretkey"
+      OPENPROJECT_HTTPS: "false"
+      DATABASE_URL: "postgres://openproject:openproject@db/openproject"
+    restart: always
+    volumes:
+      - openproject_data:/var/openproject
+
+volumes:
+  openproject_data:
+  db_data:
