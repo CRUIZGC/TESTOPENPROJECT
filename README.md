@@ -530,4 +530,5 @@ server {
 If you're changing Taiga configuration from default subdomain (https://taiga.mycompany.com) to subpath (http://mycompany.com/subpath) or vice versa, on top of adjusting the configuration as said above, you should consider changing the TAIGA_SECRET_KEY so the refresh works properly for the end user.
 C a m b i o   p a r a   c e r r a r   T G - 2  
  C a m b i o s   p a r a   l a   t a r e a   # 1  
+ C a m b i o s   p a r a   l a   t a r e a   # 2  
  
